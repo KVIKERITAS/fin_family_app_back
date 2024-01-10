@@ -32,12 +32,21 @@ model User {
 // }
 
 // model PersonalFinance {
-//   Balance      number
+//   id       String   @id @default(uuid())
+//   Balance      Decimal
 //   Transactions Transactions[]
 // }
 
-// model Transcations {
-// }
+model Transactions {
+   id       String   @id @default(uuid())
+   createAt DateTime @default(now())
+   updateAt DateTime @default(now())
+   sum      Decimal
+   type     String
+   category String
+
+   @@map("transactions")
+}
 
 // model Commitments {
 
