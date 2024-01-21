@@ -7,8 +7,10 @@ export class TransactionController {
     @UseGuards(AuthGuard('jwt'))
     @Get('/all')
     getAll(@Req() req: Request) {
-        return {
-            transactions: req.transactions
+        console.log(req.body);
+        
+        return { 
+            user: req.user      
         }
     }
 }
