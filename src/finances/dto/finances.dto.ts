@@ -10,4 +10,3 @@ export class CreateTransactionDto {
     @IsNotEmpty()
     category: string;
 }
-

@@ -22,9 +22,24 @@ model User {
   username     String         @unique
   hash         String
   transactions Transactions[]
+  PersonalFinance PersonalFinance
   // Suitcase Suitcase
 
   @@map("users")
+}
+
+model PersonalFinance {
+  id       String   @id @default(uuid())
+  createAt DateTime @default(now())
+  updateAt DateTime @default(now())
+  balance      Decimal
+  incomeSum    Decimal
+  outcomeSum    Decimal
+  Transactions Transactions[]
+  User     User?    @relation(fields: [userId], references: [id])
+  userId   String?
+
+  @@index([userId])
 }
 
 model Transactions {
@@ -43,12 +58,6 @@ model Transactions {
 // model Suitcase {
 //   PersonalFinance PersonalFinance
 //   Commitments Commitments
-// }
-
-// model PersonalFinance {
-//   id       String   @id @default(uuid())
-//   Balance      Decimal
-//   Transactions Transactions[]
 // }
 
 // model Commitments {
