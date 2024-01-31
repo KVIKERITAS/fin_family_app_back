@@ -2,7 +2,7 @@ import { Controller, Get, Req, UseGuards } from '@nestjs/common'
 import { AuthGuard } from '@nestjs/passport'
 import { Request } from 'express'
 
-@Controller('transactions')
+@Controller('finances')
 export class TransactionController {
     @UseGuards(AuthGuard('jwt'))
     @Get('/all')
@@ -10,7 +10,7 @@ export class TransactionController {
         console.log(req.body);
         
         return { 
-            user: req.user      
+            user: req.user
         }
     }
 }
